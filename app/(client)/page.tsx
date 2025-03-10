@@ -9,12 +9,7 @@ async function getPosts() {
     title,
     slug,
     publishedAt,
-    excerpt,
-    tags[]-> {
-      _id,
-      slug,
-      name
-    }
+    excerpt
   }
   `;
   const data = await client.fetch(query);
@@ -25,11 +20,10 @@ export const revalidate = 60;
 
 export default async function Home() {
   const posts: Post[] = await getPosts();
-  console.log(posts, "posts");
 
   return (
     <div>
-      <Header title="Articles" tags />
+      <Header title="Articles" />
       <div>
         {posts?.length > 0 &&
           posts?.map((post) => <PostComponent key={post?._id} post={post} />)}
