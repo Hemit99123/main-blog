@@ -1,5 +1,3 @@
-import AddComment from "@/app/components/AddComment";
-import AllComments from "@/app/components/AllComments";
 import Header from "@/app/components/Header";
 import Toc from "@/app/components/Toc";
 import { slugify } from "@/app/utils/helpers";
@@ -115,12 +113,6 @@ const page = async ({ params, searchParams }: Params) => {
           <PortableText
             value={post?.body}
             components={myPortableTextComponents}
-          />
-          <AddComment postId={post?._id} />
-          <AllComments
-            comments={post?.comments || []}
-            slug={post?.slug?.current}
-            commentsOrder={commentsOrder.toString()}
           />
         </div>
       </div>
